@@ -18,7 +18,7 @@
                 <artifactId>maven-release-plugin</artifactId>
                 <version>${maven-release-plugin.version}</version>
                 <configuration>
-                    <releaseVersion>${project.version}</releaseVersion>
+                    <tagNameFormat>${project.version}</tagNameFormat>
                 </configuration>
             </plugin>
         </plugins>
