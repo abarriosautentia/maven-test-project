@@ -1,12 +1,6 @@
 name: "Maven Release"
 
-on:
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: "The source branch to create release"
-        required: true
-        default: $default-branch
+on: workflow_dispatch
 
 jobs:
   release:
