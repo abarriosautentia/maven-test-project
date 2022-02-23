@@ -5,7 +5,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.autentia.albarrios</groupId>
-    <artifactId>quarkus-rest-demo</artifactId>
+    <artifactId>maven-test-project</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+
+    <properties>
+        <project.scm.id>github</project.scm.id>
+    </properties>
+
+    <scm>
+        <connection>scm:git:git@github.com:abarriosautentia/maven-test-project.git</connection>
+        <developerConnection>scm:git:${scm.url}</developerConnection>
+        <url>https://github.com/abarriosautentia/maven-test-project.git</url>
+        <tag>HEAD</tag>
+    </scm>
 
 </project>
