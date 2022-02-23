@@ -33,6 +33,10 @@ jobs:
         id: set-tag-version
         shell: bash
 
+      - name: "Set the new version"
+        run: echo "hola ${{ steps.set-tag-version.outputs.tag-version }}"
+        shell: bash
+
       - name: "Create GitHub Release"
         uses: ncipollo/release-action@v1
         with:
