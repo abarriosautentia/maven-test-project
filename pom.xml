@@ -4,7 +4,7 @@
 
     <groupId>com.autentia.albarrios</groupId>
     <artifactId>maven-test-project</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3-SNAPSHOT</version>
 
     <properties>
         <project.scm.id>github</project.scm.id>
@@ -24,7 +24,7 @@
         <connection>scm:git:git@github.com:abarriosautentia/maven-test-project.git</connection>
         <developerConnection>scm:git:${project.scm.url}</developerConnection>
         <url>https://github.com/abarriosautentia/maven-test-project.git</url>
-        <tag>maven-test-project-1.0.2</tag>
+        <tag>HEAD</tag>
     </scm>
 
 </project>
