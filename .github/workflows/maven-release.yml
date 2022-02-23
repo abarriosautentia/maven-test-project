@@ -29,12 +29,8 @@ jobs:
         run: mvn -B release:prepare
 
       - name: "Set the new version"
-        run: echo "::set-output name=tag-version::$(grep -r 'scm.tag' release.properties | sed 's/scm.tag\s*=\s*//')"
+        run: echo "::set-output name=tag-version::$(grep -r 'scm.tag=' release.properties | sed 's/scm.tag=//')"
         id: set-tag-version
-        shell: bash
-
-      - name: "Set the new version"
-        run: echo "hola ${{ steps.set-tag-version.outputs.tag-version }}"
         shell: bash
 
       - name: "Create GitHub Release"
