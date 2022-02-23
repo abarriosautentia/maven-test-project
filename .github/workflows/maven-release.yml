@@ -32,10 +32,7 @@ jobs:
           git config user.name "GitHub Actions"
 
       - name: "Prepare Maven Release"
-        run: mvn -B release:prepare -s .maven-settings.xml
-        env:
-          CI_USERNAME: ${{ github.actor }}
-          CI_PASSWORD: ${{ github.token }}
+        run: mvn -B release:prepare
 
       - name: "Set the new version"
         run: echo "::set-output name=tag-version::$(grep -r 'scm.tag' release.properties | sed 's/scm.tag\s*=\s*//')"
