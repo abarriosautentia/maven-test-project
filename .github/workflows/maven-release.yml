@@ -1,0 +1,49 @@
+name: 'Maven Release'
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'The source branch to create release'
+        required: true
+        default: 'master'
+
+jobs:
+  release:
+
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: "Set up JDK 11"
+        uses: actions/setup-java@v2
+        with:
+          java-version: "11"
+          distribution: "temurin"
+          server-id: "github"
+
+      - name: "Configure Git User"
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions"
+
+      - name: "Prepare Maven Release"
+        run: mvn -B release:prepare -s .maven-settings.xml
+        env:
+          CI_USERNAME: ${{ github.actor }}
+          CI_PASSWORD: ${{ github.token }}
+
+      - name: "Set the new version"
+        run: echo "::set-output name=tag-version::$(grep -r 'scm.tag' release.properties | sed 's/scm-tag\s*=\s*//')"
+        id: set-tag-version
+        shell: bash
+
+      - name: "Create GitHub Release"
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "target/*.jar"
+          tag: ${{ steps.set-tag-version.outputs.tag-version }}
+          token: ${{ secrets.GITHUB_TOKEN }}
