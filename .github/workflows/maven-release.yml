@@ -1,12 +1,12 @@
-name: 'Maven Release'
+name: "Maven Release"
 
 on:
   workflow_dispatch:
     inputs:
       branch:
-        description: 'The source branch to create release'
+        description: "The source branch to create release"
         required: true
-        default: 'master'
+        default: $default-branch
 
 jobs:
   release:
@@ -37,7 +37,7 @@ jobs:
           CI_PASSWORD: ${{ github.token }}
 
       - name: "Set the new version"
-        run: echo "::set-output name=tag-version::$(grep -r 'scm.tag' release.properties | sed 's/scm-tag\s*=\s*//')"
+        run: echo "::set-output name=tag-version::$(grep -r 'scm.tag' release.properties | sed 's/scm.tag\s*=\s*//')"
         id: set-tag-version
         shell: bash
 

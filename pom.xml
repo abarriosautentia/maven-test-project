@@ -8,11 +8,24 @@
 
     <properties>
         <project.scm.id>github</project.scm.id>
+        <maven-release-plugin.version>3.0.0-M5</maven-release-plugin.version>
     </properties>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>${maven-release-plugin.version}</version>
+                <configuration>
+                    <releaseVersion>${project.version}</releaseVersion>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <scm>
         <connection>scm:git:git@github.com:abarriosautentia/maven-test-project.git</connection>
-        <developerConnection>scm:git:${scm.url}</developerConnection>
+        <developerConnection>scm:git:${project.scm.url}</developerConnection>
         <url>https://github.com/abarriosautentia/maven-test-project.git</url>
         <tag>HEAD</tag>
     </scm>
